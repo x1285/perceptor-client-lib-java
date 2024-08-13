@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutionException
 
 internal class PerceptorHttpRepository(private val clientSettings: HttpClientSettings) : IPerceptorRepository {
 
-    private val underlyingClient: HttpClient = HttpClient.newHttpClient()
+    private val underlyingClient: HttpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).build();
     private val authorizationHeader: String by lazy {
         "Bearer ${clientSettings.apiKey}"
     }
